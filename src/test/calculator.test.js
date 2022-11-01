@@ -32,6 +32,13 @@ describe('Calculator', () => {
     expect(cal.value).toBe(3);
   })
 
+  it('add should throw an error if value is greater is than 100', () => {
+    // expect 안에서 콜백함수로 전달해서 에러 확인 가능
+    expect(() => {
+      cal.add(101);
+    }).toThrow('Value can not be greater than 100')
+  })
+
   it('subtracts', () => {
     cal.subtract(1);
     expect(cal.value).toBe(-1)
@@ -54,6 +61,12 @@ describe('Calculator', () => {
       cal.set(1)
       cal.divide(0);
       expect(cal.value).toBe(Infinity);
+    })
+
+    it('4 / 4 === 1', () => {
+      cal.set(4)
+      cal.divide(4);
+      expect(cal.value).toBe(1);
     })
   })
 
